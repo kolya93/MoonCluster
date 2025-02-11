@@ -1,0 +1,29 @@
+Project lead: Nicholas Belotserkovskiy
+
+Project contributors: Nicholas Belotserkovskiy
+
+Project description:
+MoonCluster is an experimental computer architecture for mobile personal computing. It breaks free from many traditions of computer architecture to deliver unparalleled levels of low-level security and reliability.
+MoonCluster will likely be the most secure modern mobile personal computer system, safe from root-level malware such as spyware, ransomware, root-level ACE exploits, trojans, etc..
+This is a research system, and as such, most of the work will be documenting the system's general design.
+Thus, this project will consist mostly of documentation of the architecture, logs of hardware tests, simulations, and consultation from professors.
+
+Project goals:
+The main goal of this project is to make public my experimental ideas behind MoonCluster. 
+The other goals include:
+- Create a simulation of the system's interface
+- Test the system's speed
+- Consult a plethora of professors and log their opinions
+- Begin official development of the system
+
+At the end of the semester, I will have publicized the ideas behind the architecture, completed a simulation of the system, evaluated the system's usability by testing its speed, collated the opinions of professors, and begun development of the actual system.
+
+Milestones:
+Middle of February: formally publicize and document the ideas behind the architecture on GitHub.
+
+End of February: test the system's speed and complete the simulation.
+
+End of March: consult many professors and log their opinions onto GitHub.
+
+End of Semester: begin official development of actual system.
+
