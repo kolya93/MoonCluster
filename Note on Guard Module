@@ -1,0 +1,2 @@
+Guard module's system code is very simple: it provides an interface with user module to the file system. This code is so simple that it can be fully verified. This means that there are no bugs in the system code, so 
+there are no software exploits, meaning there is no way for malware to break free from its user module and access other files, other processes, or any other part of the system.
