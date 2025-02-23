@@ -1,0 +1,19 @@
+Note on network card security and cryptoprocessors:
+
+Userspace processes must not have access to the system's private key. 
+If they did have access, then a malicious userspace program could send
+the private key to the malicious actor. Then of course the malicious actor
+could decrypt any intercepted messages encrypted with this private key, 
+namely those sent by other userspace processes. This is an unacceptable 
+and severe security risk.
+It is imperative that MoonCluster user processes have no access to the
+user module's private key.
+
+
+Solution:
+Therefore, every MoonCluster user module must have a secure
+cryptoprocessor, which is a hardware module that performs encryption
+while hiding the private key. On a system with a cryptoprocessor, 
+no software, not even the operating system has access to the system's
+private key. Thus, MoonCluster programs will never know the system's 
+private key.
