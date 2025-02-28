@@ -1,0 +1,219 @@
+{
+  home.dir
+  [
+    {
+      camera.dir
+      [
+        {
+          camera.exe
+        }
+        {
+          newlyTakenPhotos.dir
+          []
+        }
+        {
+          newlyTakenVideos.dir
+          []
+        }
+      ]
+    }
+    {
+      photoViewer.dir
+      [
+        {
+          photoViewer.exe
+        }
+      ]
+    }
+    {
+      videoPlayer.dir
+      [
+        {
+          videoPlayer.exe
+        }
+      ]
+    }
+    {
+      audioPlayer.dir
+      [
+        {
+          audioPlayer.exe
+        }
+      ]
+    }
+    {
+      audioRecorder.dir
+      [
+        {
+          audioRecorder.exe
+        }
+        {
+          newlyRecordedAudioFiles.dir
+            []
+          
+        }
+      ]
+    }
+    {
+      textEditor.dir
+      [
+        {
+          textEditor.exe
+        }
+        {
+          newlyCreatedTextFiles.dir
+            []
+          
+        }
+      ]
+    }
+    {
+      browser.dir
+      [
+        {
+          browser.exe
+        }
+        {
+          uploads.dir
+            []
+          
+        }
+        {
+          downloads.dir
+            []
+          
+        }
+        {
+          assets.dir
+            []
+          
+        }
+        {
+          tab1.txt
+        }
+        {
+          tab2.txt
+        }
+        {
+          tab3.txt
+        }
+      ]
+    }
+    {
+      tor.dir
+      [
+        {
+          tor.exe
+        }
+        {
+          uploads.dir
+            []
+          
+        }
+        {
+          downloads.dir
+            []
+          
+        }
+        {
+          assets.dir
+            []
+          
+        }
+        {
+          YouTube.txt
+        }
+        {
+          tab2.txt
+        }
+      ]
+    }
+
+    {
+      minecraft.dir
+      [
+        {
+          minecraft.exe
+        }
+        {
+          assets.dir
+            []
+          
+        }
+      ]
+    }
+
+    {
+      decryptor.dir
+      [
+        {
+          decryptor.exe
+        }
+      ]
+    }
+
+    {
+      appHub.dir
+      [
+        {
+          appHub.exe          
+        }
+      ]
+    }
+
+    {
+      settings.dir
+      [
+        {
+          settings.exe
+        }
+      ]
+    }
+
+    {
+      maps.dir
+      [
+        {
+          maps.exe
+        }
+      ]
+    }
+
+    {
+      misc.dir
+      [
+        {
+          textFiles.dir
+          [
+            {
+              aphorisms.txt
+            }
+            {
+              horusRising.txt
+            }
+          ]
+        }
+        {
+          systemStuff.dir
+            []
+          
+        }
+        {
+          photots.dir
+            []
+          
+        }
+        {
+          videos.dir
+            []
+          
+        }
+        {
+          playlists.dir
+            []
+          
+        }
+      ]
+    }
+  ]
+}
