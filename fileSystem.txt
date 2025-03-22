@@ -99,36 +99,7 @@
         }
       ]
     }
-    {
-      tor.dir
-      [
-        {
-          tor.exe
-        }
-        {
-          uploads.dir
-            []
-          
-        }
-        {
-          downloads.dir
-            []
-          
-        }
-        {
-          assets.dir
-            []
-          
-        }
-        {
-          YouTube.txt
-        }
-        {
-          tab2.txt
-        }
-      ]
-    }
-
+    
     {
       minecraft.dir
       [
@@ -148,15 +119,6 @@
       [
         {
           decryptor.exe
-        }
-      ]
-    }
-
-    {
-      appHub.dir
-      [
-        {
-          appHub.exe          
         }
       ]
     }
