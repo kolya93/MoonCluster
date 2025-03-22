@@ -382,8 +382,8 @@ bool isValidPath(string& str) {
 	if (str.size() <= 3)
 		return false;
 
-	if (str.substr(str.size() - 3, 3) != "(W)" && str.substr(str.size() - 3, 3) != "(R)" && str.substr(str.size() - 3, 3) != "(B)") {
-		cout << "paths must end in `(W)`, `(R)`, or `(B)`" << endl;
+	if (str.substr(str.size() - 3, 3) != "(0)" && str.substr(str.size() - 3, 3) != "(1)" && str.substr(str.size() - 3, 3) != "(2)" && str.substr(str.size() - 3, 3) != "(3)") {
+		cout << "paths must end in `(x)` where x is between 0 and 3" << endl;
 		return false;
 	}
 
@@ -415,6 +415,9 @@ bool isValidPath(string& str) {
 
 bool parseConfine(string& str) {
 	vector<string> directoryNames = splitStringByChar(str, ',');
+
+	//NEEDED ADDITION:
+	//MUST CHECK DIRECTORY NAMES FOR DUPLICATES
 
 	for (size_t i=0; i<directoryNames.size(); ++i) {
 		if (!isValidPath(directoryNames[i])) {
@@ -499,6 +502,18 @@ void executeDisable(string& str) {
 }
 
 
+void executeSetperm(string& str) {
+	if (!parseConfine(str))
+		return;
+
+	
+
+
+
+
+}
+
+
 
 void parseCommand(const string& command) {
 	vector<string> splitCommand;
@@ -577,6 +592,14 @@ void parseCommand(const string& command) {
 			return;
 		}
 		executeDisable(splitCommand[1]);
+		return;
+	}
+	if (splitCommand[0] == "setperm") {
+		if (splitCommand.size() != 2) {
+			cout << "usage disable: `disable [peripheral]`" << endl;
+			return;
+		}
+		executeSetperm(splitCommand[1]);
 		return;
 	}
 	cout << "command not recognized" << endl;
