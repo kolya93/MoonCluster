@@ -21,13 +21,29 @@ public:
     void display() {
         cout << "isDir: " << isDir << ", deleted: " << deleted << ", name: " << name <<  endl;
     }
+
+    string shortName() {
+    	string temp;
+    	for (int i=this->name.size() - 1; i>=0; --i) {
+    		if (name[i] == '/')
+    			break;
+    		temp += this->name[i];
+    	}
+
+    	string out;
+    	for (int i=temp.size(); i>=0; --i) {
+    		out += temp[i];
+    	}
+    	return out;
+    }
+
 };
-
-
 
 File* cwd;
 File* homePointer;
 File* currentlyRunningExecutable = nullptr;
+vector<File*> allFiles;
+
 
 ///////////// FILE SYSTEM INITIALIZATION STUFF IS BELOW ////////////////////
 
@@ -50,6 +66,8 @@ string removeWhitespace(const string& input) {
 
 void createFilesRecursively(File* parentFilePtr, string& str) {
 	File* root = new File;
+	allFiles.push_back(root);
+
 	int firstBracket;
 
 	for (size_t i=1; i<str.size(); ++i) {
@@ -132,6 +150,8 @@ void createFilesRecursively(File* parentFilePtr, string& str) {
 //RETURNS: a pointer to the root node
 File* createFiles(string& str) {
 	File* rootPtr = new File;
+	allFiles.push_back(rootPtr);
+
 	int firstBracket;
 
 	for (size_t i=1; i<str.size(); ++i) {
@@ -243,6 +263,20 @@ File* getFileFromNameInCWD(string& str) {
 
 
 
+File* getFilePointerFromPath(string path) {
+	for (int i=0; i<allFiles.size(); ++i) {
+		if (allFiles[i]->name == path)
+			return allFiles[i];
+	}
+
+	return nullptr;
+
+}
+
+
+
+
+
 void executeCD(string& fileName) {
 
 	if (fileName == "..") {
@@ -256,6 +290,7 @@ void executeCD(string& fileName) {
 	}
 
 	for (size_t i=0; i<cwd->contents.size(); ++i) {
+		cout << "-" << cwd->contents[i]->name << "-" << endl;
 		if (fileName == cwd->contents[i]->name) {
 			if (!cwd->contents[i]->isDir) {
 				cout << fileName << " is not a directory" << endl;
@@ -344,9 +379,62 @@ void executeRMDIR(string& fileName) {
 }
 
 
-void executeCP(string& str1, string& str2) {
-	// File* file = getFilePointerFromName(str1);
+
+
+
+void executeCP(string& fileName, string& dirName) {
+	// File* file = getFilePointerFromName(fileName);
+	// File* dir = getFilePointerFromName(dirName);
+
+	// if (file == nullptr || dir == nullptr) {
+	// 	cout << "invalid files" << endl;
+	// 	return;
+	// }
+
+	// dir->contents.push_back(file);
+
+
 }
+
+
+ void removeChild(File* child, File* parent) {
+ 	for (int i=0; i<parent->contents.size(); ++i) {
+
+ 		
+ 		if (parent->contents[i]->name == child->name) {
+ 			parent->contents.erase(parent->contents.begin() + i);
+ 			return;
+ 		}
+ 	}
+ 	cerr << "child doesn't exist" << endl;
+ 	exit(1);
+ }
+
+
+void executeMV(string& fileName, string& dirName) {
+	File* file = getFilePointerFromPath(fileName);
+	File* dir = getFilePointerFromPath(dirName);
+
+	if (file == nullptr || dir == nullptr) {
+		cout << "invalid files" << endl;
+		return;
+	}
+
+	cout << file->name << endl;
+	cout << dir->name << endl;
+
+
+	dir->contents.push_back(file);
+
+	removeChild(file, file->parent);
+
+	file->parent = dir;
+
+	file->name = dir->name + "/" + file->shortName();
+
+
+}
+
 
 
 
@@ -522,6 +610,11 @@ void parseCommand(const string& command) {
 	if (splitCommand.size() == 0)
 		return;
 
+	if (splitCommand[0] == "help") {
+		cout << "cd\npwd\nls\nrm\nrmdir\ncp\nmv\nmkdir\nrun\ndisable\nsetperm\n";
+		return;
+	}
+
 	if (splitCommand[0] == "cd") {
 		if (splitCommand.size() != 2) {
 			cout << "usage error for cd" << endl;
@@ -572,7 +665,17 @@ void parseCommand(const string& command) {
 		}
 		executeCP(splitCommand[1], splitCommand[2]);
 		return;		
+	
 	}
+	if (splitCommand[0] == "mv") {
+		if (splitCommand.size() != 3) {
+			cout << "usage : `cp [file name] [directory name]`" << endl;
+			return;
+		}
+		executeMV(splitCommand[1], splitCommand[2]);
+		return;		
+	}
+	
 	if (splitCommand[0] == "mkdir") {
 		//cannot make a directory called `home`
 
@@ -596,7 +699,7 @@ void parseCommand(const string& command) {
 	}
 	if (splitCommand[0] == "setperm") {
 		if (splitCommand.size() != 2) {
-			cout << "usage disable: `disable [peripheral]`" << endl;
+			cout << "usage setperm: `setperm [name of executable] [paths]`" << endl;
 			return;
 		}
 		executeSetperm(splitCommand[1]);
@@ -612,7 +715,6 @@ void parseCommand(const string& command) {
 
 
 int main() {
-
 	//initialize file system
 	ifstream file("fileSystem.txt"); // Open the file
     stringstream buffer;          // Stringstream to hold the file contents
@@ -627,11 +729,8 @@ int main() {
     // Convert the stringstream contents to a string
     string fileContents = buffer.str();
 
-
     //remove all whitespace
     fileContents = removeWhitespace(fileContents);
-
-    // cout << fileContents << endl;
 
 	File* root = createFiles(fileContents);
 	root->parent = NULL;
@@ -639,19 +738,16 @@ int main() {
 	cwd = root;
 	homePointer = root;
 
-
-
 	string command;
 
 	cout << "Welcome to the MoonCluster launcher. Written by Nicholas Belotserkovskiy." << endl << "\"One doesn't discover new lands without consenting to lose sight, for a very long time, of the shore.\" -Andre Gide" << endl;
-	
+	cout << "type `help` for a list of supported commands" << endl;
+
 	while (true) {
 		cout << ">";
 
 		//read the command into `command`
 		getline(cin, command);
-
 		parseCommand(command);
-
 	}
 }
