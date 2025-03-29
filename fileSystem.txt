@@ -2,112 +2,122 @@
   home.dir
   [
     {
-      camera.dir
+      home.dir/camera.dir
       [
         {
-          camera.exe
+          home.dir/camera.dir/camera.exe
         }
         {
-          newlyTakenPhotos.dir
+          home.dir/camera.dir/newlyTakenPhotos.dir
           []
         }
         {
-          newlyTakenVideos.dir
+          home.dir/camera.dir/newlyTakenVideos.dir
           []
         }
       ]
     }
     {
-      photoViewer.dir
+      home.dir/photoViewer.dir
       [
         {
-          photoViewer.exe
+          home.dir/photoViewer.dir/photoViewer.exe
+        }
+        {
+          home.dir/photoViewer.dir/photos.dir
+          []
         }
       ]
     }
     {
-      videoPlayer.dir
+      home.dir/videoPlayer.dir
       [
         {
-          videoPlayer.exe
+          home.dir/videoPlayer.dir/videoPlayer.exe
+        }
+        {
+          home.dir/videoPlayer.dir/videos.dir
+          []
         }
       ]
     }
     {
-      audioPlayer.dir
+      home.dir/audioPlayer.dir
       [
         {
-          audioPlayer.exe
+          home.dir/audioPlayer.dir/audioPlayer.exe
+        }
+        {
+          home.dir/audioPlayer.dir/audioFiles.dir
+          []
         }
       ]
     }
     {
-      audioRecorder.dir
+      home.dir/audioRecorder.dir
       [
         {
-          audioRecorder.exe
+          home.dir/audioRecorder.dir/audioRecorder.exe
         }
         {
-          newlyRecordedAudioFiles.dir
+          home.dir/audioRecorder.dir/newlyRecordedAudioFiles.dir
             []
           
         }
       ]
     }
     {
-      textEditor.dir
+      home.dir/textEditor.dir
       [
         {
-          textEditor.exe
+          home.dir/textEditor.dir/textEditor.exe
         }
         {
-          newlyCreatedTextFiles.dir
-            []
-          
+          home.dir/textEditor.dir/newlyCreatedTextFiles.dir
+            []     
+        }
+        {
+          home.dir/textEditor.dir/textFiles.dir
+          []
         }
       ]
     }
     {
-      browser.dir
+      home.dir/browser.dir
       [
         {
-          browser.exe
+          home.dir/browser.dir/browser.exe
         }
         {
-          uploads.dir
+          home.dir/browser.dir/uploads.dir
             []
           
         }
         {
-          downloads.dir
+          home.dir/browser.dir/downloads.dir
             []
           
         }
         {
-          assets.dir
-            []
-          
+          home.dir/browser.dir/tab1.txt
         }
         {
-          tab1.txt
+          home.dir/browser.dir/tab2.txt
         }
         {
-          tab2.txt
-        }
-        {
-          tab3.txt
+          home.dir/browser.dir/tab3.txt
         }
       ]
     }
     
     {
-      minecraft.dir
+      home.dir/minecraft.dir
       [
         {
-          minecraft.exe
+          home.dir/minecraft.dir/minecraft.exe
         }
         {
-          assets.dir
+          home.dir/minecraft.dir/assets.dir
             []
           
         }
@@ -115,63 +125,67 @@
     }
 
     {
-      decryptor.dir
+      home.dir/decryptor.dir
       [
         {
-          decryptor.exe
+          home.dir/decryptor.dir/decryptor.exe
+        }
+        {
+          home.dir/decryptor.dir/messages.dir
+          []
         }
       ]
     }
 
     {
-      settings.dir
+      home.dir/settings.dir
       [
         {
-          settings.exe
+          home.dir/settings.dir/settings.exe
         }
       ]
     }
 
     {
-      maps.dir
+      home.dir/maps.dir
       [
         {
-          maps.exe
+          home.dir/maps.dir/maps.exe
         }
       ]
     }
 
     {
-      misc.dir
+      home.dir/misc.dir
       [
         {
-          textFiles.dir
+          home.dir/misc.dir/textFiles.dir
           [
             {
-              aphorisms.txt
+              home.dir/misc.dir/textFiles.dir/aphorisms.txt
             }
             {
-              horusRising.txt
+              home.dir/misc.dir/textFiles.dir/horusRising.txt
             }
           ]
         }
         {
-          systemStuff.dir
+          home.dir/misc.dir/systemStuff.dir
             []
           
         }
         {
-          photots.dir
+          home.dir/misc.dir/photots.dir
             []
           
         }
         {
-          videos.dir
+          home.dir/misc.dir/videos.dir
             []
           
         }
         {
-          playlists.dir
+          home.dir/misc.dir/playlists.dir
             []
           
         }
